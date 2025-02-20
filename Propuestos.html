@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        input, button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Calculadora</h2>
+    <form id="form">
+        <label><input type="radio" name="op" value="1" checked> X * Z + Z + X</label>
+        <label><input type="radio" name="op" value="2"> Multiplicar</label>
+        <label><input type="radio" name="op" value="3"> Área círculo</label>
+        <label><input type="radio" name="op" value="4"> Área cuadrado</label>
+        <label><input type="radio" name="op" value="5"> Área triángulo</label>
+    </form>
+    <input type="number" id="t1" placeholder="Valor 1">
+    <input type="number" id="t2" placeholder="Valor 2">
+    <button onclick="calcular()">Calcular</button>
+    <h3 id="res"></h3>
+    <script>
+        function calcular() {
+            let op = document.querySelector('input[name="op"]:checked').value,
+                t1 = parseFloat(document.getElementById("t1").value) || 0,
+                t2 = parseFloat(document.getElementById("t2").value) || 0,
+                res = "";
+            if (op == "1") res = t1 * t2 + t2 + t1;
+            else if (op == "2") res = t1 * t2;
+            else if (op == "3") res = Math.PI * t1 ** 2;
+            else if (op == "4") res = t1 ** 2;
+            else if (op == "5") res = (t1 * t2) / 2;
+            document.getElementById("res").innerText = "Resultado: " + res;
+        }
+    </script>
+</body>
+</html>
+
